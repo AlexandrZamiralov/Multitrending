@@ -98,6 +98,7 @@ void *prt(void *p) {
 }
 
 int main() {
+    pthread_mutex_init(&mutex,NULL);
     //создаем три потока без ничего
     pthread_t thread_1;
     pthread_t thread_2;
@@ -108,6 +109,6 @@ int main() {
     pthread_create(&thread_3, NULL, &prt, NULL);
     //ждем пока закончится поток 1, вечно
     pthread_join(thread_1, NULL);
-    
+    pthread_mutex_destroy(&mutex);
     return 0;
 }
